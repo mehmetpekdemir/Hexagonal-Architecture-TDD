@@ -2,8 +2,8 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
     <groupId>com.mehmetpekdemir</groupId>
     <artifactId>ecommerceapp</artifactId>
     <packaging>pom</packaging>
@@ -31,6 +31,11 @@
         <module>category-service</module>
         <module>product-service</module>
     </modules>
+
+    <properties>
+        <springfox.swagger2>2.9.2</springfox.swagger2>
+        <springfox.io.swagger>1.5.21</springfox.io.swagger>
+    </properties>
 
     <dependencies>
         <!-- ========== -->
@@ -75,9 +80,9 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- ========== -->
-        <!--  processor -->
-        <!-- ========== -->
+        <!-- =========== -->
+        <!--  processor  -->
+        <!-- =========== -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
@@ -92,6 +97,53 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!-- ============= -->
+        <!--   swagger ui  -->
+        <!-- ============= -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.swagger2}</version>
+        </dependency>
+
+        <!-- ============= -->
+        <!--   swagger 2   -->
+        <!-- ============= -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.swagger2}</version> <!-- solved NumberFormatException in swagger2 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-models</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- =========== ===========  -->
+        <!--   swagger annotations    -->
+        <!-- =========== ===========  -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${springfox.io.swagger}</version>
+        </dependency>
+
+        <!-- ========= =========  -->
+        <!--   swagger models     -->
+        <!-- ========= =========  -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+            <version>${springfox.io.swagger}</version>
+        </dependency>
+
     </dependencies>
 
 </project>
