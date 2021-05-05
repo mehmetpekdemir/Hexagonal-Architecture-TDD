@@ -1,7 +1,35 @@
 package com.mehmetpekdemir.categoryservice.adapter.out.persistence.repository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.CategoryJpaEntity;
+import com.mehmetpekdemir.categoryservice.common.AbstractIT;
+import com.mehmetpekdemir.categoryservice.common.IT;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
-class CategoryJpaRepositoryIT {
+import static org.assertj.core.api.BDDAssertions.then;
+
+/**
+ * @author MEHMET PEKDEMIR
+ * @since 1.0
+ */
+@IT
+class CategoryJpaRepositoryIT extends AbstractIT {
+
+    @Autowired
+    private CategoryJpaRepository categoryJpaRepository;
+
+    @Test
+    void it_should_create_category() {
+        //given
+        final var categoryJpaEntity = new CategoryJpaEntity();
+        categoryJpaEntity.setName("category name");
+        final var persistedCategory = testEntityManager.persistAndFlush(categoryJpaEntity);
+
+        //when
+        final var foundCategory = categoryJpaRepository.findById(persistedCategory.getId()).get();
+
+        //then
+        then(foundCategory.getName()).isEqualTo("category name");
+    }
 
 }
