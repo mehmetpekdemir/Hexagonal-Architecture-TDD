@@ -1,7 +1,54 @@
 package com.mehmetpekdemir.categoryservice.adapter.in.web;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.mehmetpekdemir.categoryservice.adapter.in.web.request.CreateCategoryRequest;
+import com.mehmetpekdemir.categoryservice.application.port.in.CategoryCommandUseCase;
+import com.mehmetpekdemir.categoryservice.common.AbstractMvc;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 
-class CategoryCommandControllerMvcTest {
+import static org.assertj.core.api.BDDAssertions.then;
+import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+/**
+ * @author MEHMET PEKDEMIR
+ * @since 1.0
+ */
+@WebMvcTest(CategoryCommandController.class)
+class CategoryCommandControllerMvcTest extends AbstractMvc {
+
+    @MockBean
+    private CategoryCommandUseCase categoryCommandUseCase;
+
+    @Captor
+    private ArgumentCaptor<CreateCategoryRequest> createCategoryRequestArgumentCaptor;
+
+    @Test
+    void it_should_create_category() throws Exception {
+        //given
+        final var createCategoryRequest = new CreateCategoryRequest();
+        createCategoryRequest.setName("category name");
+
+        //when
+        mockMvc.perform(
+                post("/api/v1/category")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(createCategoryRequest)))
+                .andDo(print())
+                .andExpect(status().isCreated());
+
+        //then
+        verify(categoryCommandUseCase).createCategory(createCategoryRequest.toModel());
+        final var response = createCategoryRequestArgumentCaptor.getValue();
+        then(response.getName()).isEqualTo(response.getName());
+
+    }
 
 }
