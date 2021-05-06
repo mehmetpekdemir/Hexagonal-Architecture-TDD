@@ -1,17 +1,15 @@
 package com.mehmetpekdemir.categoryservice.adapter.in.web;
 
 import com.mehmetpekdemir.categoryservice.adapter.in.web.request.CreateCategoryRequest;
+import com.mehmetpekdemir.categoryservice.adapter.in.web.response.CategoryResponse;
 import com.mehmetpekdemir.categoryservice.application.port.in.CategoryCommandUseCase;
 import com.mehmetpekdemir.categoryservice.common.AbstractMvc;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 
 import static org.assertj.core.api.BDDAssertions.then;
-import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -25,9 +23,6 @@ class CategoryCommandControllerMvcTest extends AbstractMvc {
 
     @MockBean
     private CategoryCommandUseCase categoryCommandUseCase;
-
-    @Captor
-    private ArgumentCaptor<CreateCategoryRequest> createCategoryRequestArgumentCaptor;
 
     @Test
     void it_should_create_category() throws Exception {
@@ -45,10 +40,9 @@ class CategoryCommandControllerMvcTest extends AbstractMvc {
                 .andExpect(status().isCreated());
 
         //then
-        verify(categoryCommandUseCase).createCategory(createCategoryRequest.toModel());
-        final var response = createCategoryRequestArgumentCaptor.getValue();
+        final var category = categoryCommandUseCase.createCategory(createCategoryRequest.toModel());
+        final var response = CategoryResponse.from(category);
         then(response.getName()).isEqualTo(response.getName());
-
     }
 
 }
