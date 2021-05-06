@@ -15,6 +15,10 @@ public final class Category {
     private final Long id;
     private final String name;
 
+    public static Category withoutId(String name) {
+        return new Category(null, name);
+    }
+
     public static Category withId(Long id, String name) {
         return new Category(id, name);
     }

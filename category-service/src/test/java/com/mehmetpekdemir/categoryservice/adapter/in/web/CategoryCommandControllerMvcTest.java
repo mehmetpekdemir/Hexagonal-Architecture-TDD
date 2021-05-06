@@ -1,15 +1,18 @@
 package com.mehmetpekdemir.categoryservice.adapter.in.web;
 
 import com.mehmetpekdemir.categoryservice.adapter.in.web.request.CreateCategoryRequest;
-import com.mehmetpekdemir.categoryservice.adapter.in.web.response.CategoryResponse;
 import com.mehmetpekdemir.categoryservice.application.port.in.CategoryCommandUseCase;
+import com.mehmetpekdemir.categoryservice.application.port.in.command.CreateCategoryCommand;
 import com.mehmetpekdemir.categoryservice.common.AbstractMvc;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 
 import static org.assertj.core.api.BDDAssertions.then;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -24,6 +27,9 @@ class CategoryCommandControllerMvcTest extends AbstractMvc {
     @MockBean
     private CategoryCommandUseCase categoryCommandUseCase;
 
+    @Captor
+    private ArgumentCaptor<CreateCategoryCommand> createCategoryCommandArgumentCaptor;
+
     @Test
     void it_should_create_category() throws Exception {
         //given
@@ -37,12 +43,12 @@ class CategoryCommandControllerMvcTest extends AbstractMvc {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(createCategoryRequest)))
                 .andDo(print())
-                .andExpect(status().isCreated());
+                .andExpect(status().isOk());
 
         //then
-        final var category = categoryCommandUseCase.createCategory(createCategoryRequest.toModel());
-        final var response = CategoryResponse.from(category);
-        then(response.getName()).isEqualTo(response.getName());
+        verify(categoryCommandUseCase).createCategory(createCategoryCommandArgumentCaptor.capture());
+        final var categoryCommand = createCategoryCommandArgumentCaptor.getValue();
+        then(categoryCommand.getName()).isEqualTo(categoryCommand.getName());
     }
 
 }

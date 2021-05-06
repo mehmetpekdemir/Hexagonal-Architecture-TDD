@@ -3,10 +3,13 @@ package com.mehmetpekdemir.categoryservice.adapter.in.web;
 import com.mehmetpekdemir.categoryservice.adapter.in.web.request.CreateCategoryRequest;
 import com.mehmetpekdemir.categoryservice.adapter.in.web.response.CategoryResponse;
 import com.mehmetpekdemir.categoryservice.application.port.in.CategoryCommandUseCase;
+import com.mehmetpekdemir.categoryservice.domain.Category;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
@@ -17,17 +20,15 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/v1/category")
 @RequiredArgsConstructor
-class CategoryCommandController {
+public class CategoryCommandController {
 
     private final CategoryCommandUseCase categoryCommandUseCase;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<CategoryResponse> createCategory(
+    public ResponseEntity<Category> createCategory(
             @Valid @RequestBody CreateCategoryRequest createCategoryRequest) {
         final var category = categoryCommandUseCase.createCategory(createCategoryRequest.toModel());
-        final var response = CategoryResponse.from(category);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(category);
     }
 
 }
