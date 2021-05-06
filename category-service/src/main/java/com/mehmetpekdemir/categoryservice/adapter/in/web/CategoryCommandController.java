@@ -1,6 +1,7 @@
 package com.mehmetpekdemir.categoryservice.adapter.in.web;
 
 import com.mehmetpekdemir.categoryservice.adapter.in.web.request.CreateCategoryRequest;
+import com.mehmetpekdemir.categoryservice.adapter.in.web.response.CategoryResponse;
 import com.mehmetpekdemir.categoryservice.application.port.in.CategoryCommandUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,8 +23,10 @@ class CategoryCommandController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> createCategory(@Valid @RequestBody CreateCategoryRequest createCategoryRequest) {
-        final var response = categoryCommandUseCase.createCategory(createCategoryRequest.toModel());
+    public ResponseEntity<CategoryResponse> createCategory(
+            @Valid @RequestBody CreateCategoryRequest createCategoryRequest) {
+        final var category = categoryCommandUseCase.createCategory(createCategoryRequest.toModel());
+        final var response = CategoryResponse.from(category);
         return ResponseEntity.ok(response);
     }
 

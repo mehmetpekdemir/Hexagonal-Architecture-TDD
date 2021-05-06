@@ -9,7 +9,7 @@ import lombok.Getter;
  */
 @Getter
 @Builder
-public class CreateCategoryCommand {
+public final class CreateCategoryCommand {
 
     private final String name;
 
