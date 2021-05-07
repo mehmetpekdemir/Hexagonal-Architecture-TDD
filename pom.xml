@@ -30,7 +30,6 @@
     <modules>
         <module>category-service</module>
         <module>product-service</module>
-        <module>common-service</module>
     </modules>
 
     <properties>

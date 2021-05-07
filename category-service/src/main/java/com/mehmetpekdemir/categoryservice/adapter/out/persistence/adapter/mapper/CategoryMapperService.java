@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class CategoryMapperService {
 
     public CategoryJpaEntity from(CreateCategoryCommand createCategoryCommand) {
-        final CategoryJpaEntity categoryJpaEntity = new CategoryJpaEntity();
+        final var categoryJpaEntity = new CategoryJpaEntity();
         categoryJpaEntity.setName(createCategoryCommand.getName());
         return categoryJpaEntity;
     }

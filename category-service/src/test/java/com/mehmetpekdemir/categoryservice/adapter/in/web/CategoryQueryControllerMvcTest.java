@@ -1,7 +1,9 @@
 package com.mehmetpekdemir.categoryservice.adapter.in.web;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * @author MEHMET PEKDEMIR
+ * @since 1.0
+ */
 class CategoryQueryControllerMvcTest {
 
 }

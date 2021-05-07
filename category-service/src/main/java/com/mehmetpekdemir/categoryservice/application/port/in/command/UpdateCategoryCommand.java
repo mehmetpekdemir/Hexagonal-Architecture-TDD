@@ -1,4 +1,8 @@
 package com.mehmetpekdemir.categoryservice.application.port.in.command;
 
-public class UpdateCategoryCommand {
+/**
+ * @author MEHMET PEKDEMIR
+ * @since 1.0
+ */
+public final class UpdateCategoryCommand {
 }

@@ -4,6 +4,10 @@ import com.mehmetpekdemir.categoryservice.domain.Category;
 import lombok.Builder;
 import lombok.Getter;
 
+/**
+ * @author MEHMET PEKDEMIR
+ * @since 1.0
+ */
 @Getter
 @Builder
 public final class CategoryResponse {
