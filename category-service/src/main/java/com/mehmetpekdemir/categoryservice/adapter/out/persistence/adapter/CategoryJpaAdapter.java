@@ -21,9 +21,9 @@ public class CategoryJpaAdapter implements CategoryCommandPort {
 
     @Override
     public Category createCategory(CreateCategoryCommand createCategoryCommand) {
-        final var categoryJpaEntity = categoryMapperService.from(createCategoryCommand);
+        final var categoryJpaEntity = categoryMapperService.convertCommandToEntity(createCategoryCommand);
         final var response = categoryJpaRepository.save(categoryJpaEntity);
-        return categoryMapperService.from(response);
+        return categoryMapperService.convertEntityToDomain(response);
     }
 
 }

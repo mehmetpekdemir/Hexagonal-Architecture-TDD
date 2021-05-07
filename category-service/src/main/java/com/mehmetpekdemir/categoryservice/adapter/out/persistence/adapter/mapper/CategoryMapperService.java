@@ -12,13 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class CategoryMapperService {
 
-    public CategoryJpaEntity from(CreateCategoryCommand createCategoryCommand) {
+    public CategoryJpaEntity convertCommandToEntity(CreateCategoryCommand createCategoryCommand) {
         final var categoryJpaEntity = new CategoryJpaEntity();
         categoryJpaEntity.setName(createCategoryCommand.getName());
         return categoryJpaEntity;
     }
 
-    public Category from(CategoryJpaEntity categoryJpaEntity) {
+    public Category convertEntityToDomain(CategoryJpaEntity categoryJpaEntity) {
         return Category.withId(categoryJpaEntity.getId(), categoryJpaEntity.getName());
     }
 
