@@ -1,15 +1,11 @@
 package com.mehmetpekdemir.categoryservice.common.rest;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 /**
  * @author MEHMET PEKDEMIR
  * @since 1.0
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class BaseController {
 
     protected <T> Response<DataResponse<T>> respond(List<T> data) {
