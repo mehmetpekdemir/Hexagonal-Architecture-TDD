@@ -11,7 +11,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 
-import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -43,12 +42,11 @@ class CategoryCommandControllerMvcTest extends AbstractMvc {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(createCategoryRequest)))
                 .andDo(print())
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
 
         //then
         verify(categoryCommandUseCase).createCategory(createCategoryCommandArgumentCaptor.capture());
-        final var categoryCommand = createCategoryCommandArgumentCaptor.getValue();
-        then(categoryCommand.getName()).isEqualTo(categoryCommand.getName());
+
     }
 
 }

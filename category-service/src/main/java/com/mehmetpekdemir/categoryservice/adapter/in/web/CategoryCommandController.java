@@ -27,7 +27,8 @@ class CategoryCommandController extends BaseController {
     public Response<CategoryResponse> createCategory(@Valid @RequestBody CreateCategoryRequest createCategoryRequest) {
         final var category = categoryCommandUseCase.createCategory(createCategoryRequest.toModel());
         final var response = CategoryResponse.from(category);
-        return respond(response);
+        //return respond(response);
+        return null;
     }
 
 }
