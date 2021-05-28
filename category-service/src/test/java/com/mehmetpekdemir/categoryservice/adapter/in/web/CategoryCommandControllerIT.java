@@ -4,7 +4,7 @@ import com.mehmetpekdemir.categoryservice.adapter.in.web.request.CreateCategoryR
 import com.mehmetpekdemir.categoryservice.adapter.in.web.response.CategoryResponse;
 import com.mehmetpekdemir.categoryservice.common.AbstractIT;
 import com.mehmetpekdemir.categoryservice.common.IT;
-import com.mehmetpekdemir.categoryservice.common.rest.Response;
+import com.mehmetpekdemir.commonservice.rest.Response;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;

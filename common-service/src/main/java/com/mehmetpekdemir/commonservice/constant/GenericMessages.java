@@ -1,4 +1,4 @@
-package com.mehmetpekdemir.categoryservice.common.constant;
+package com.mehmetpekdemir.commonservice.constant;
 
 import lombok.experimental.UtilityClass;
 

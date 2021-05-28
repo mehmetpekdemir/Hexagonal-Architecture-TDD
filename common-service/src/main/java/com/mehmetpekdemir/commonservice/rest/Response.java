@@ -1,4 +1,4 @@
-package com.mehmetpekdemir.categoryservice.common.rest;
+package com.mehmetpekdemir.commonservice.rest;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.mehmetpekdemir.categoryservice.common.security;
+package com.mehmetpekdemir.commonservice.security;
 
 /**
  * @author MEHMET PEKDEMIR

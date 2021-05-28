@@ -1,4 +1,4 @@
-package com.mehmetpekdemir.categoryservice.common.entity;
+package com.mehmetpekdemir.commonservice.entity;
 
 /**
  * @author MEHMET PEKDEMIR

@@ -4,8 +4,8 @@ import com.mehmetpekdemir.categoryservice.adapter.in.web.mapper.CategoryConverto
 import com.mehmetpekdemir.categoryservice.adapter.in.web.request.CreateCategoryRequest;
 import com.mehmetpekdemir.categoryservice.adapter.in.web.response.CategoryResponse;
 import com.mehmetpekdemir.categoryservice.application.port.in.CategoryCommandUseCase;
-import com.mehmetpekdemir.categoryservice.common.rest.BaseController;
-import com.mehmetpekdemir.categoryservice.common.rest.Response;
+import com.mehmetpekdemir.commonservice.rest.BaseController;
+import com.mehmetpekdemir.commonservice.rest.Response;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

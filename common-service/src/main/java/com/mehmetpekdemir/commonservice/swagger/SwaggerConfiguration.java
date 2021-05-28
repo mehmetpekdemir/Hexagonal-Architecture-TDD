@@ -1,4 +1,4 @@
-package com.mehmetpekdemir.categoryservice.common.swagger;
+package com.mehmetpekdemir.commonservice.swagger;
 
 /**
  * @author MEHMET PEKDEMIR
