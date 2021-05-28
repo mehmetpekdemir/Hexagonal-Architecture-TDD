@@ -1,8 +1,8 @@
 package com.mehmetpekdemir.categoryservice.adapter.out.persistence.repository;
 
 import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.CategoryJpaEntity;
-import com.mehmetpekdemir.categoryservice.common.AbstractIT;
-import com.mehmetpekdemir.categoryservice.common.IT;
+import com.mehmetpekdemir.categoryservice.common.AbstractTestContainer;
+import com.mehmetpekdemir.categoryservice.common.TestContainer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,8 +12,8 @@ import static org.assertj.core.api.BDDAssertions.then;
  * @author MEHMET PEKDEMIR
  * @since 1.0
  */
-@IT
-class CategoryJpaRepositoryIT extends AbstractIT {
+@TestContainer
+class CategoryJpaRepositoryIT extends AbstractTestContainer {
 
     @Autowired
     private CategoryJpaRepository categoryJpaRepository;
