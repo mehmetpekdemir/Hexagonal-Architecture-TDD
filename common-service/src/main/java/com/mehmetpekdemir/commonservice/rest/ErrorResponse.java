@@ -3,12 +3,14 @@ package com.mehmetpekdemir.commonservice.rest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * @author MEHMET PEKDEMIR
  * @since 1.0
  */
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 class ErrorResponse {
