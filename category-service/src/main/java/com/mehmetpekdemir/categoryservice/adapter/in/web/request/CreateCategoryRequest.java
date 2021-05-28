@@ -1,7 +1,6 @@
 package com.mehmetpekdemir.categoryservice.adapter.in.web.request;
 
 import com.mehmetpekdemir.categoryservice.application.port.in.command.CreateCategoryCommand;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
