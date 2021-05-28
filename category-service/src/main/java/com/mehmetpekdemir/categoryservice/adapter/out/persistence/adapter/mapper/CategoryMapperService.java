@@ -19,7 +19,10 @@ public class CategoryMapperService {
     }
 
     public Category convertEntityToDomain(CategoryJpaEntity categoryJpaEntity) {
-        return Category.withId(categoryJpaEntity.getId(), categoryJpaEntity.getName());
+        final var category = new Category();
+        category.setId(categoryJpaEntity.getId());
+        category.setName(categoryJpaEntity.getName());
+        return category;
     }
 
 }

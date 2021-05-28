@@ -22,9 +22,8 @@ class CategoryMapperServiceTest {
     @Test
     void it_should_convert_command_to_entity() {
         //given
-        final var createCategoryCommand = CreateCategoryCommand.builder()
-                .name("category name")
-                .build();
+        final var createCategoryCommand = new CreateCategoryCommand();
+        createCategoryCommand.setName("category name");
 
         //when
         final var categoryJpaEntity = categoryMapperService.convertCommandToEntity(createCategoryCommand);

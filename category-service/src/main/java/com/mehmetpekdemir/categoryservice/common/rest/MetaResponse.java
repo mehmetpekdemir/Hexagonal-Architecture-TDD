@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 class MetaResponse {
 
-    private int limit;
-    private int currentPage;
-    private int total;
-    private int totalPage;
+    private Integer limit;
+    private Integer currentPage;
+    private Long total;
+    private Integer totalPage;
 
 }

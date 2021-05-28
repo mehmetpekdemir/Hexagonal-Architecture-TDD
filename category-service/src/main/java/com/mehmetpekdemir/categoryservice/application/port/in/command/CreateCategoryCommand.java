@@ -1,6 +1,5 @@
 package com.mehmetpekdemir.categoryservice.application.port.in.command;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,9 +9,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@Builder
 public final class CreateCategoryCommand {
 
-    private final String name;
+    private String name;
 
 }

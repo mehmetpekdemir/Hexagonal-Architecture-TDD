@@ -6,7 +6,7 @@ import com.mehmetpekdemir.categoryservice.common.TestContainer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.assertj.core.api.BDDAssertions.then;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author MEHMET PEKDEMIR
@@ -19,7 +19,7 @@ class CategoryJpaRepositoryIT extends AbstractTestContainer {
     private CategoryJpaRepository categoryJpaRepository;
 
     @Test
-    void it_should_create_category() {
+    void it_should_success_category_create_when_category_called_with_valid_request() {
         //given
         final var categoryJpaEntity = new CategoryJpaEntity();
         categoryJpaEntity.setName("category name");
@@ -29,7 +29,7 @@ class CategoryJpaRepositoryIT extends AbstractTestContainer {
         final var foundCategory = categoryJpaRepository.findById(persistedCategory.getId()).get();
 
         //then
-        then(foundCategory.getName()).isEqualTo("category name");
+        assertThat(foundCategory.getName()).isEqualTo("category name");
     }
 
 }

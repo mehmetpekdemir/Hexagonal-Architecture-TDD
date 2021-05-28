@@ -24,7 +24,7 @@ class CategoryCommandControllerIT extends AbstractIT {
     };
 
     @Test
-    void it_should_create_category() {
+    void it_should_success_category_create_when_category_called_with_valid_request() {
         //given
         final var createCategoryRequest = new CreateCategoryRequest();
         createCategoryRequest.setName("category name");
