@@ -10,7 +10,6 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,20 +26,18 @@ class CategoryCommandControllerIT extends AbstractIT {
     @Test
     void it_should_create_category() {
         //given
-        CreateCategoryRequest createCategoryRequest = new CreateCategoryRequest();
-        createCategoryRequest.setName("category name2");
+        final var createCategoryRequest = new CreateCategoryRequest();
+        createCategoryRequest.setName("category name");
 
         //when
-        ResponseEntity<Response<CategoryResponse>> categoryResponse = testRestTemplate
+        final var categoryResponse = testRestTemplate
                 .exchange("/api/v1/category", HttpMethod.POST,
-                        new HttpEntity(createCategoryRequest), responseParameterizedTypeReference
-                );
+                        new HttpEntity<>(createCategoryRequest), responseParameterizedTypeReference);
 
         //then
-        System.out.println("Response: " + categoryResponse);
         assertThat(categoryResponse).isNotNull();
         assertThat(categoryResponse.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-        assertThat(categoryResponse.getBody().getData().getName()).isEqualTo("category name2");
+        assertThat(categoryResponse.getBody().getData().getName()).isEqualTo("category name");
     }
 
 }
