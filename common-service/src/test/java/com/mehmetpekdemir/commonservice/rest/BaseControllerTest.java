@@ -89,7 +89,7 @@ class BaseControllerTest {
 
     @Setter
     @Getter
-    static class DummyResponse {
+    private static final class DummyResponse {
         private String name;
     }
 
