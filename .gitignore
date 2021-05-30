@@ -25,4 +25,7 @@ hs_err_pid*
 *.iml
 *.xml
 .gitignore
+./ui-service/node_modules
+./ui-service/yarn.lock
+
 
