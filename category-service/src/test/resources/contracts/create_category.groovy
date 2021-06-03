@@ -31,7 +31,7 @@ Contract.make {
         }
 
         body(
-"""
+                """
                 {
                     "data": {
                         "id" : 1,
