@@ -7,7 +7,6 @@ import com.mehmetpekdemir.categoryservice.common.TestContainer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,8 +24,7 @@ class CategoryJpaRepositoryIT extends AbstractTestContainer {
     @Test
     void it_should_success_category_create_when_category_called_with_valid_request() {
         //given
-        final var now = LocalDateTime.now();
-        final var uuid = UUID.randomUUID().toString();
+        final String uuid = UUID.randomUUID().toString();
         final var status = Status.of("active");
 
         final var categoryJpaEntity = new CategoryJpaEntity();
@@ -35,8 +33,6 @@ class CategoryJpaRepositoryIT extends AbstractTestContainer {
         categoryJpaEntity.setName("category name");
         categoryJpaEntity.setDescription("category description");
         categoryJpaEntity.setStatus(status.get());
-        categoryJpaEntity.setCreatedAt(now);
-        categoryJpaEntity.setModifiedAt(now);
 
         final var persistedCategory = testEntityManager.persistAndFlush(categoryJpaEntity);
 
@@ -49,8 +45,8 @@ class CategoryJpaRepositoryIT extends AbstractTestContainer {
         assertThat(foundCategory.getName()).isEqualTo("category name");
         assertThat(foundCategory.getDescription()).isEqualTo("category description");
         assertThat(foundCategory.getStatus()).isEqualTo(status.get());
-        assertThat(foundCategory.getCreatedAt()).isEqualTo(now);
-        assertThat(foundCategory.getModifiedAt()).isEqualTo(now);
+        assertThat(foundCategory.getCreatedAt()).isNotNull();
+        assertThat(foundCategory.getModifiedAt()).isNotNull();
     }
 
 }

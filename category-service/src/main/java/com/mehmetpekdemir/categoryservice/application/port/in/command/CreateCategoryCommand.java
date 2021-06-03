@@ -1,16 +1,19 @@
 package com.mehmetpekdemir.categoryservice.application.port.in.command;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * @author MEHMET PEKDEMIR
  * @since 1.0
  */
 @Getter
-@Setter
+@Builder
 public final class CreateCategoryCommand {
 
-    private String name;
+    private final String parentId;
+    private final String name;
+    private final String description;
+    private final String status;
 
 }

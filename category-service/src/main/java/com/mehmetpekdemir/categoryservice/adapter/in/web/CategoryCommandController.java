@@ -1,6 +1,5 @@
 package com.mehmetpekdemir.categoryservice.adapter.in.web;
 
-import com.mehmetpekdemir.categoryservice.adapter.in.web.mapper.CategoryConvertorService;
 import com.mehmetpekdemir.categoryservice.adapter.in.web.request.CreateCategoryRequest;
 import com.mehmetpekdemir.categoryservice.adapter.in.web.response.CategoryResponse;
 import com.mehmetpekdemir.categoryservice.application.port.in.CategoryCommandUseCase;
@@ -22,14 +21,13 @@ import javax.validation.Valid;
 class CategoryCommandController extends BaseController {
 
     private final CategoryCommandUseCase categoryCommandUseCase;
-    private final CategoryConvertorService categoryConvertorService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Response<CategoryResponse> createCategory(@Valid @RequestBody CreateCategoryRequest createCategoryRequest) {
-        final var createCategoryCommand = categoryConvertorService.convertCreateCategoryRequestToCreateCategoryCommand(createCategoryRequest);
+        final var createCategoryCommand = createCategoryRequest.convertCategoryRequestToCategoryCommand();
         final var category = categoryCommandUseCase.createCategory(createCategoryCommand);
-        final var response = categoryConvertorService.convertCategoryToCategoryResponse(category);
+        final var response = CategoryResponse.convertCategoryToCategoryResponse(category);
         return respond(response);
     }
 

@@ -1,17 +1,18 @@
 package com.mehmetpekdemir.categoryservice.domain;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * @author MEHMET PEKDEMIR
  * @since 1.0
  */
 @Getter
-@Setter
+@Builder
 public final class Category {
 
-    private Long id;
-    private String name;
+    private final String name;
+    private final String description;
+    private final String status;
 
 }
