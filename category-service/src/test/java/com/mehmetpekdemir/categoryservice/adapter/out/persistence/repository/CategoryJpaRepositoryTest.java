@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @since 1.0
  */
 @TestContainer
-class CategoryJpaRepositoryIT extends AbstractTestContainer {
+class CategoryJpaRepositoryTest extends AbstractTestContainer {
 
     @Autowired
     private CategoryJpaRepository categoryJpaRepository;
@@ -26,7 +26,6 @@ class CategoryJpaRepositoryIT extends AbstractTestContainer {
         //given
         final String uuid = UUID.randomUUID().toString();
         final var status = Status.of("active");
-
         final var categoryEntity = new CategoryEntity();
         categoryEntity.setParentId(null);
         categoryEntity.setUuid(uuid);

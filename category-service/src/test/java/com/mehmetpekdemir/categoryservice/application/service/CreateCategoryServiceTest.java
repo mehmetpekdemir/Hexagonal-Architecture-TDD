@@ -19,10 +19,10 @@ import static org.mockito.Mockito.verify;
  * @since 1.0
  */
 @ExtendWith(MockitoExtension.class)
-class CategoryServiceTest {
+class CreateCategoryServiceTest {
 
     @InjectMocks
-    private CategoryService categoryService;
+    private CreateCategoryService createCategoryService;
 
     @Mock
     private InsertCategoryPort insertCategoryPort;
@@ -42,7 +42,7 @@ class CategoryServiceTest {
                 .build();
 
         //when
-        categoryService.createCategory(createCategoryCommand);
+        createCategoryService.createCategory(createCategoryCommand);
 
         //then
         verify(readCategoryPort).readCategory("category name");

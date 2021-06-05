@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @since 1.0
  */
 @SpringBootTest
-class CategoryServiceApplicationTest {
+class CreateCategoryServiceApplicationTest {
 
     @Test
     void contextLoads() {

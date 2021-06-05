@@ -47,7 +47,6 @@ class CategoryMapperServiceTest {
     void it_should_convert_entity_to_domain() {
         //given
         final String uuid = UUID.randomUUID().toString();
-
         final var categoryEntity = new CategoryEntity();
         categoryEntity.setParentId(null);
         categoryEntity.setUuid(uuid);
