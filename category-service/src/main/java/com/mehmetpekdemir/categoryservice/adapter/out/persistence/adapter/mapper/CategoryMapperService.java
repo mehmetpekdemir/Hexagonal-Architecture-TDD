@@ -1,6 +1,6 @@
 package com.mehmetpekdemir.categoryservice.adapter.out.persistence.adapter.mapper;
 
-import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.CategoryJpaEntity;
+import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.CategoryEntity;
 import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.Status;
 import com.mehmetpekdemir.categoryservice.application.port.in.command.CreateCategoryCommand;
 import com.mehmetpekdemir.categoryservice.domain.Category;
@@ -15,23 +15,23 @@ import java.util.UUID;
 @Component
 public class CategoryMapperService {
 
-    public CategoryJpaEntity convertCommandToEntity(CreateCategoryCommand createCategoryCommand) {
+    public CategoryEntity convertCommandToEntity(CreateCategoryCommand createCategoryCommand) {
         final var uuid = UUID.randomUUID().toString();
         final var status = Status.of(createCategoryCommand.getStatus()).orElse(Status.PASSIVE);
-        final var categoryJpaEntity = new CategoryJpaEntity();
-        categoryJpaEntity.setUuid(uuid);
-        categoryJpaEntity.setParentId(createCategoryCommand.getParentId());
-        categoryJpaEntity.setName(createCategoryCommand.getName());
-        categoryJpaEntity.setDescription(createCategoryCommand.getDescription());
-        categoryJpaEntity.setStatus(status);
-        return categoryJpaEntity;
+        final var categoryEntity = new CategoryEntity();
+        categoryEntity.setUuid(uuid);
+        categoryEntity.setParentId(createCategoryCommand.getParentId());
+        categoryEntity.setName(createCategoryCommand.getName());
+        categoryEntity.setDescription(createCategoryCommand.getDescription());
+        categoryEntity.setStatus(status);
+        return categoryEntity;
     }
 
-    public Category convertEntityToDomain(CategoryJpaEntity categoryJpaEntity) {
+    public Category convertEntityToDomain(CategoryEntity categoryEntity) {
         return Category.builder()
-                .name(categoryJpaEntity.getName())
-                .description(categoryJpaEntity.getDescription())
-                .status(categoryJpaEntity.getStatus().toString())
+                .name(categoryEntity.getName())
+                .description(categoryEntity.getDescription())
+                .status(categoryEntity.getStatus().toString())
                 .build();
     }
 

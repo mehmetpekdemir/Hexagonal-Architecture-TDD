@@ -14,8 +14,8 @@ import javax.persistence.*;
 @Setter
 @ToString
 @Entity
-@Table(name = "category_jpa_entity")
-public class CategoryJpaEntity extends BaseEntity {
+@Table(name = "category_entity")
+public class CategoryEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

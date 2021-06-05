@@ -2,7 +2,7 @@ package com.mehmetpekdemir.categoryservice.adapter.in.web;
 
 import com.mehmetpekdemir.categoryservice.adapter.in.web.request.CreateCategoryRequest;
 import com.mehmetpekdemir.categoryservice.adapter.in.web.response.CategoryResponse;
-import com.mehmetpekdemir.categoryservice.application.port.in.CategoryCommandUseCase;
+import com.mehmetpekdemir.categoryservice.application.port.in.CreateCategoryUseCase;
 import com.mehmetpekdemir.commonservice.rest.BaseController;
 import com.mehmetpekdemir.commonservice.rest.Response;
 import lombok.RequiredArgsConstructor;
@@ -18,15 +18,15 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/v1/category")
 @RequiredArgsConstructor
-class CategoryCommandController extends BaseController {
+class CreateCategoryController extends BaseController {
 
-    private final CategoryCommandUseCase categoryCommandUseCase;
+    private final CreateCategoryUseCase createCategoryUseCase;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Response<CategoryResponse> createCategory(@Valid @RequestBody CreateCategoryRequest createCategoryRequest) {
         final var createCategoryCommand = createCategoryRequest.convertCategoryRequestToCategoryCommand();
-        final var category = categoryCommandUseCase.createCategory(createCategoryCommand);
+        final var category = createCategoryUseCase.createCategory(createCategoryCommand);
         final var response = CategoryResponse.convertCategoryToCategoryResponse(category);
         return respond(response);
     }

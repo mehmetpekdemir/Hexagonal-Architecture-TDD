@@ -2,7 +2,8 @@ package com.mehmetpekdemir.categoryservice.application.service;
 
 import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.Status;
 import com.mehmetpekdemir.categoryservice.application.port.in.command.CreateCategoryCommand;
-import com.mehmetpekdemir.categoryservice.application.port.out.CategoryCommandPort;
+import com.mehmetpekdemir.categoryservice.application.port.out.InsertCategoryPort;
+import com.mehmetpekdemir.categoryservice.application.port.out.ReadCategoryPort;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -18,13 +19,16 @@ import static org.mockito.Mockito.verify;
  * @since 1.0
  */
 @ExtendWith(MockitoExtension.class)
-class CategoryCommandServiceTest {
+class CategoryServiceTest {
 
     @InjectMocks
-    private CategoryCommandService categoryCommandService;
+    private CategoryService categoryService;
 
     @Mock
-    private CategoryCommandPort categoryCommandPort;
+    private InsertCategoryPort insertCategoryPort;
+
+    @Mock
+    private ReadCategoryPort readCategoryPort;
 
     @Test
     void it_should_success_category_create_when_category_called_with_valid_request() {
@@ -38,10 +42,11 @@ class CategoryCommandServiceTest {
                 .build();
 
         //when
-        categoryCommandService.createCategory(createCategoryCommand);
+        categoryService.createCategory(createCategoryCommand);
 
         //then
-        verify(categoryCommandPort).createCategory(createCategoryCommand);
+        verify(readCategoryPort).readCategory("category name");
+        verify(insertCategoryPort).insertCategory(createCategoryCommand);
     }
 
 }

@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @since 1.0
  */
 @IT
-class CategoryCommandControllerIT extends AbstractIT {
+class CreateCategoryControllerIT extends AbstractIT {
 
     private final ParameterizedTypeReference<Response<CategoryResponse>> responseParameterizedTypeReference = new ParameterizedTypeReference<>() {
     };

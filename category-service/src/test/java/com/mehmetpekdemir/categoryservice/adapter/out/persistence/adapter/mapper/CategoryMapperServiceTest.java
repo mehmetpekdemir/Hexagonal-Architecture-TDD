@@ -1,6 +1,6 @@
 package com.mehmetpekdemir.categoryservice.adapter.out.persistence.adapter.mapper;
 
-import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.CategoryJpaEntity;
+import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.CategoryEntity;
 import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.Status;
 import com.mehmetpekdemir.categoryservice.application.port.in.command.CreateCategoryCommand;
 import org.junit.jupiter.api.Test;
@@ -34,13 +34,13 @@ class CategoryMapperServiceTest {
                 .build();
 
         //when
-        final var categoryJpaEntity = categoryMapperService.convertCommandToEntity(createCategoryCommand);
+        final var categoryEntity = categoryMapperService.convertCommandToEntity(createCategoryCommand);
 
         //then
-        then(categoryJpaEntity.getParentId()).isEqualTo(parentId);
-        then(categoryJpaEntity.getName()).isEqualTo("category name");
-        then(categoryJpaEntity.getDescription()).isEqualTo("category description");
-        then(categoryJpaEntity.getStatus()).isEqualTo(Status.ACTIVE);
+        then(categoryEntity.getParentId()).isEqualTo(parentId);
+        then(categoryEntity.getName()).isEqualTo("category name");
+        then(categoryEntity.getDescription()).isEqualTo("category description");
+        then(categoryEntity.getStatus()).isEqualTo(Status.ACTIVE);
     }
 
     @Test
@@ -48,15 +48,15 @@ class CategoryMapperServiceTest {
         //given
         final String uuid = UUID.randomUUID().toString();
 
-        final var categoryJpaEntity = new CategoryJpaEntity();
-        categoryJpaEntity.setParentId(null);
-        categoryJpaEntity.setUuid(uuid);
-        categoryJpaEntity.setName("category name");
-        categoryJpaEntity.setDescription("category description");
-        categoryJpaEntity.setStatus(Status.ACTIVE);
+        final var categoryEntity = new CategoryEntity();
+        categoryEntity.setParentId(null);
+        categoryEntity.setUuid(uuid);
+        categoryEntity.setName("category name");
+        categoryEntity.setDescription("category description");
+        categoryEntity.setStatus(Status.ACTIVE);
 
         //when
-        final var category = categoryMapperService.convertEntityToDomain(categoryJpaEntity);
+        final var category = categoryMapperService.convertEntityToDomain(categoryEntity);
 
         //then
         then(category.getName()).isEqualTo("category name");

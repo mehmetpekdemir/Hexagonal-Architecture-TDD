@@ -1,6 +1,6 @@
 package com.mehmetpekdemir.categoryservice.adapter.out.persistence.repository;
 
-import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.CategoryJpaEntity;
+import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.CategoryEntity;
 import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.Status;
 import com.mehmetpekdemir.categoryservice.common.AbstractTestContainer;
 import com.mehmetpekdemir.categoryservice.common.TestContainer;
@@ -27,14 +27,14 @@ class CategoryJpaRepositoryIT extends AbstractTestContainer {
         final String uuid = UUID.randomUUID().toString();
         final var status = Status.of("active");
 
-        final var categoryJpaEntity = new CategoryJpaEntity();
-        categoryJpaEntity.setParentId(null);
-        categoryJpaEntity.setUuid(uuid);
-        categoryJpaEntity.setName("category name");
-        categoryJpaEntity.setDescription("category description");
-        categoryJpaEntity.setStatus(status.get());
+        final var categoryEntity = new CategoryEntity();
+        categoryEntity.setParentId(null);
+        categoryEntity.setUuid(uuid);
+        categoryEntity.setName("category name");
+        categoryEntity.setDescription("category description");
+        categoryEntity.setStatus(status.get());
 
-        final var persistedCategory = testEntityManager.persistAndFlush(categoryJpaEntity);
+        final var persistedCategory = testEntityManager.persistAndFlush(categoryEntity);
 
         //when
         final var foundCategory = categoryJpaRepository.findById(persistedCategory.getId()).get();
