@@ -3,7 +3,7 @@ package contracts
 import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
-    name "Test create category"
+    name "create category"
     description "it should success category create when category called with valid request"
 
     request {
@@ -16,9 +16,12 @@ Contract.make {
         method POST()
 
         body("""
-                        {
-                            "name": "category name"
-                        }
+                    {
+                        "parentId": "null",
+                        "name": "laptop",
+                        "description": "macbook pro m1 16gb ram 256gb hard disk ",
+                        "status": "active"
+                    }
                         """
         )
     }
@@ -34,15 +37,13 @@ Contract.make {
                 """
                 {
                     "data": {
-                        "id" : 1,
-                        "name" : "category name"
+                        "name": "laptop",
+                        "description": "macbook pro m1 16gb ram 256gb hard disk ",
+                        "status": "ACTIVE"
                     },
                     "errors": null
                 }
-
         """
-
-
         )
     }
 

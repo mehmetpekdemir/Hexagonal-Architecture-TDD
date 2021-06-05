@@ -11,6 +11,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 
+import java.util.UUID;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -18,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @since 1.0
  */
 @IT
-class CategoryCommandControllerIT extends AbstractIT {
+class CreateCategoryControllerIT extends AbstractIT {
 
     private final ParameterizedTypeReference<Response<CategoryResponse>> responseParameterizedTypeReference = new ParameterizedTypeReference<>() {
     };
@@ -26,8 +28,12 @@ class CategoryCommandControllerIT extends AbstractIT {
     @Test
     void it_should_success_category_create_when_category_called_with_valid_request() {
         //given
+        final String parentId = UUID.randomUUID().toString();
         final var createCategoryRequest = new CreateCategoryRequest();
+        createCategoryRequest.setParentId(parentId);
         createCategoryRequest.setName("category name");
+        createCategoryRequest.setDescription("category description");
+        createCategoryRequest.setStatus("active");
 
         //when
         final var categoryResponse = testRestTemplate
@@ -38,6 +44,8 @@ class CategoryCommandControllerIT extends AbstractIT {
         assertThat(categoryResponse).isNotNull();
         assertThat(categoryResponse.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(categoryResponse.getBody().getData().getName()).isEqualTo("category name");
+        assertThat(categoryResponse.getBody().getData().getDescription()).isEqualTo("category description");
+        assertThat(categoryResponse.getBody().getData().getStatus()).isEqualTo("ACTIVE");
     }
 
 }

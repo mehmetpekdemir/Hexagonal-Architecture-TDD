@@ -7,8 +7,8 @@ import com.mehmetpekdemir.categoryservice.domain.Category;
  * @author MEHMET PEKDEMIR
  * @since 1.0
  */
-public interface CategoryCommandPort {
+public interface InsertCategoryPort {
 
-    Category createCategory(CreateCategoryCommand createCategoryCommand);
+    Category insertCategory(CreateCategoryCommand createCategoryCommand);
 
 }
