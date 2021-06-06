@@ -6,7 +6,9 @@ import com.mehmetpekdemir.categoryservice.application.port.in.command.CreateCate
 import com.mehmetpekdemir.categoryservice.domain.Category;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * @author MEHMET PEKDEMIR
@@ -33,6 +35,12 @@ public class CategoryMapperService {
                 .description(categoryEntity.getDescription())
                 .status(categoryEntity.getStatus().toString())
                 .build();
+    }
+
+    public List<Category> convertEntityListToDomainList(List<CategoryEntity> categoryEntities) {
+        return categoryEntities.stream()
+                .map(this::convertEntityToDomain)
+                .collect(Collectors.toList());
     }
 
 }
