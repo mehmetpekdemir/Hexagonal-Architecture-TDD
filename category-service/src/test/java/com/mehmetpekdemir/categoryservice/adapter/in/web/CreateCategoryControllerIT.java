@@ -26,7 +26,7 @@ class CreateCategoryControllerIT extends AbstractIT {
     };
 
     @Test
-    void it_should_success_category_create_when_category_called_with_valid_request() {
+    void it_should_create_category_when_category_called_with_valid_request() {
         //given
         final String parentId = UUID.randomUUID().toString();
         final var createCategoryRequest = new CreateCategoryRequest();

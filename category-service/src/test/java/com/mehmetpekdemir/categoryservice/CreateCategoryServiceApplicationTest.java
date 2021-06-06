@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class CreateCategoryServiceApplicationTest {
 
     @Test
-    void contextLoads() {
+    void context_loads() {
     }
 
 }

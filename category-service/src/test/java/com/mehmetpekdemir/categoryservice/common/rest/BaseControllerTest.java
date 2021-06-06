@@ -18,7 +18,7 @@ class BaseControllerTest {
     private BaseController baseController;
 
     @Test
-    void it_should_success_respond_with_list_of_data() {
+    void it_should_respond_with_list_of_data() {
         //given
         final var dummy = new DummyResponse();
         dummy.setName("dummy name");
@@ -34,7 +34,7 @@ class BaseControllerTest {
     }
 
     @Test
-    void it_should_success_respond_with_list_of_data_and_meta() {
+    void it_should_respond_with_list_of_data_and_meta() {
         //given
         final var dummy = new DummyResponse();
         dummy.setName("dummy name");
@@ -60,7 +60,7 @@ class BaseControllerTest {
     }
 
     @Test
-    void it_should_success_respond_with_data() {
+    void it_should_respond_with_data() {
         //given
         final var data = new DummyResponse();
         data.setName("dummy name");
@@ -73,7 +73,7 @@ class BaseControllerTest {
     }
 
     @Test
-    void it_should_success_respond_with_error_response() {
+    void it_should_respond_with_error_response() {
         //given
         final var errorResponse = new ErrorResponse();
         errorResponse.setErrorCode("404");
