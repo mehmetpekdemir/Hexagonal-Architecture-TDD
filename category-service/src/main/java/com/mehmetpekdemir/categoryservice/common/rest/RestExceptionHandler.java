@@ -1,7 +1,6 @@
-package com.mehmetpekdemir.commonservice.rest;
+package com.mehmetpekdemir.categoryservice.common.rest;
 
-import com.mehmetpekdemir.commonservice.exception.CategoryBusinessException;
-import com.mehmetpekdemir.commonservice.exception.ProductBusinessException;
+import com.mehmetpekdemir.categoryservice.common.exception.CategoryBusinessException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
@@ -32,12 +31,6 @@ public class RestExceptionHandler extends BaseController {
     @ExceptionHandler(CategoryBusinessException.class)
     public Response<?> handleCategoryBusinessException(CategoryBusinessException categoryBusinessException, Locale locale) {
         return createErrorResponseFromMessageSource(categoryBusinessException.getKey(), locale);
-    }
-
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(ProductBusinessException.class)
-    public Response<?> handleProductBusinessException(ProductBusinessException productBusinessException, Locale locale) {
-        return createErrorResponseFromMessageSource(productBusinessException.getKey(), locale);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

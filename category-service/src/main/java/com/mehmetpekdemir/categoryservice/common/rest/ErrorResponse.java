@@ -1,4 +1,4 @@
-package com.mehmetpekdemir.commonservice.rest;
+package com.mehmetpekdemir.categoryservice.common.rest;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,11 +13,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-class MetaResponse {
+class ErrorResponse {
 
-    private Integer limit;
-    private Integer currentPage;
-    private Long total;
-    private Integer totalPage;
+    private String errorCode;
+    private String errorDescription;
 
 }

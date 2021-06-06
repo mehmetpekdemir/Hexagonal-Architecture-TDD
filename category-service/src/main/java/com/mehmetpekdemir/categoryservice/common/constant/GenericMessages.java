@@ -1,4 +1,4 @@
-package com.mehmetpekdemir.commonservice.constant;
+package com.mehmetpekdemir.categoryservice.common.constant;
 
 import lombok.experimental.UtilityClass;
 
@@ -8,5 +8,7 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 public class GenericMessages {
+
+    private static final String SUCCESSFULLY_DELETED = "Successfully deleted";
 
 }

@@ -4,8 +4,6 @@ import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.Categor
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 /**
  * @author MEHMET PEKDEMIR
  * @since 1.0
@@ -13,6 +11,6 @@ import java.util.Optional;
 @Repository
 public interface CategoryJpaRepository extends JpaRepository<CategoryEntity, Long> {
 
-    Optional<CategoryEntity> findByName(String name);
+    boolean existsByName(String name);
 
 }

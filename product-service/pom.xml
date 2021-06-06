@@ -125,14 +125,6 @@
             <version>${springfox.io.swagger}</version>
         </dependency>
 
-        <!-- ======= -->
-        <!-- common  -->
-        <!-- ======= -->
-        <dependency>
-            <groupId>com.mehmetpekdemir</groupId>
-            <artifactId>common-service</artifactId>
-            <version>1.0.0</version>
-        </dependency>
     </dependencies>
 
 </project>

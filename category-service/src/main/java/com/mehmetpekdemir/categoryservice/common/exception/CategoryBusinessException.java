@@ -1,4 +1,4 @@
-package com.mehmetpekdemir.commonservice.exception;
+package com.mehmetpekdemir.categoryservice.common.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
