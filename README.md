@@ -1,8 +1,9 @@
- # E-commerce application
- 
- ### To Do List
- 
- ###### Trello
+# E-commerce application
+
+### To Do List
+
+###### Trello
+
 ```
   https://trello.com/b/AsLbiBOz/e-commerce
 ```
@@ -10,6 +11,7 @@
 ### Tech Stack
 
 ###### Backend
+
 ```
  - Java 11
  - Spring Framework
@@ -20,7 +22,8 @@
  - Contract Tests
 ```
 
-###### Frontend 
+###### Frontend
+
 ```
  - Javascript
  - React.js
@@ -28,6 +31,7 @@
 ```
 
 ###### Devops
+
 ```
  - Docker
  - Kubernates 
@@ -40,6 +44,7 @@
 For building and running the application you need :
 
 ###### Version
+
 ```
 - JDK 11   version : 11.0.11 
 - Maven    version : 3.6.3
@@ -48,9 +53,7 @@ For building and running the application you need :
 - Npm      version : 7.11.0
 ```
 
- 
-
-### Build & Run 
+### Build & Run
 
 ###### Docker
 
@@ -63,6 +66,7 @@ For building and running the application you need :
 ```
 
 ###### Backend
+
 ```
   mvn clean install 
 ```
@@ -70,9 +74,9 @@ For building and running the application you need :
 ```
   mvn --projects your-service spring-boot:run
 ```
-  
+
 ###### Frontend
- 
+
 ```
 npm install
 ```
@@ -82,6 +86,7 @@ npm start
 ```
 
 ### Ports
+
 ```
   - category-service port : http://localhost:8001
   - product-service port  : http://localhost:8002
