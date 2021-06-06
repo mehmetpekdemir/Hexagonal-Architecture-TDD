@@ -11,7 +11,6 @@ import lombok.Getter;
 @Builder
 public final class CreateCategoryCommand {
 
-    private final String parentId;
     private final String name;
     private final String description;
     private final String status;

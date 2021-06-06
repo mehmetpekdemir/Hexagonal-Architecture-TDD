@@ -1,7 +1,6 @@
 package com.mehmetpekdemir.categoryservice.adapter.out.persistence.adapter;
 
 import com.mehmetpekdemir.categoryservice.adapter.out.persistence.adapter.mapper.CategoryMapperService;
-import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.CategoryEntity;
 import com.mehmetpekdemir.categoryservice.adapter.out.persistence.repository.CategoryJpaRepository;
 import com.mehmetpekdemir.categoryservice.application.port.in.command.CreateCategoryCommand;
 import com.mehmetpekdemir.categoryservice.application.port.out.ExistsCategoryPort;

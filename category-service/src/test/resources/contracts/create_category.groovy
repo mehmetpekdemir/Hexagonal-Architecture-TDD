@@ -4,7 +4,7 @@ import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
     name "create category"
-    description "it should success category create when category called with valid request"
+    description "it should create category when category called with valid request"
 
     request {
         url "/api/v1/category"

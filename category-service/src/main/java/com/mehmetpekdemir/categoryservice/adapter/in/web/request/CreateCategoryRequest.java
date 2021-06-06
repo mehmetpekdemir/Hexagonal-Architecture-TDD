@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
-import java.util.Optional;
 
 /**
  * @author MEHMET PEKDEMIR
@@ -14,8 +13,6 @@ import java.util.Optional;
 @Getter
 @Setter
 public final class CreateCategoryRequest {
-
-    private String parentId;
 
     @NotBlank
     private String name;
@@ -28,7 +25,6 @@ public final class CreateCategoryRequest {
 
     public CreateCategoryCommand convertCategoryRequestToCategoryCommand() {
         return CreateCategoryCommand.builder()
-                .parentId(Optional.ofNullable(parentId).orElse(null))
                 .name(name)
                 .description(description)
                 .status(status)

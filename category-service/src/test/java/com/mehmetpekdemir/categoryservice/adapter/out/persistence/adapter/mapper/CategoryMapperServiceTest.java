@@ -26,9 +26,7 @@ class CategoryMapperServiceTest {
     @Test
     void it_should_convert_command_to_entity() {
         //given
-        final String parentId = UUID.randomUUID().toString();
         final var createCategoryCommand = CreateCategoryCommand.builder()
-                .parentId(parentId)
                 .name("category name")
                 .description("category description")
                 .status("active")
@@ -38,7 +36,6 @@ class CategoryMapperServiceTest {
         final var categoryEntity = categoryMapperService.convertCommandToEntity(createCategoryCommand);
 
         //then
-        then(categoryEntity.getParentId()).isEqualTo(parentId);
         then(categoryEntity.getName()).isEqualTo("category name");
         then(categoryEntity.getDescription()).isEqualTo("category description");
         then(categoryEntity.getStatus()).isEqualTo(Status.ACTIVE);

@@ -10,8 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.UUID;
-
 import static org.mockito.Mockito.verify;
 
 /**
@@ -33,9 +31,7 @@ class CreateCategoryServiceTest {
     @Test
     void it_should_create_category_when_category_called_with_valid_request() {
         //given
-        final var uuid = UUID.randomUUID().toString();
         final var createCategoryCommand = CreateCategoryCommand.builder()
-                .parentId(uuid)
                 .name("category name")
                 .description("category description")
                 .status(Status.ACTIVE.toString())

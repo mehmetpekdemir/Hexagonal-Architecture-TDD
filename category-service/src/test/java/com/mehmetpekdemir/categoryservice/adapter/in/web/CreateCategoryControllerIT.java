@@ -11,8 +11,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 
-import java.util.UUID;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -28,16 +26,16 @@ class CreateCategoryControllerIT extends AbstractIT {
     @Test
     void it_should_create_category_when_category_called_with_valid_request() {
         //given
-        final String parentId = UUID.randomUUID().toString();
+        final String url = "/api/v1/category";
+
         final var createCategoryRequest = new CreateCategoryRequest();
-        createCategoryRequest.setParentId(parentId);
         createCategoryRequest.setName("category name");
         createCategoryRequest.setDescription("category description");
         createCategoryRequest.setStatus("active");
 
         //when
         final var categoryResponse = testRestTemplate
-                .exchange("/api/v1/category", HttpMethod.POST,
+                .exchange(url, HttpMethod.POST,
                         new HttpEntity<>(createCategoryRequest), responseParameterizedTypeReference);
 
         //then

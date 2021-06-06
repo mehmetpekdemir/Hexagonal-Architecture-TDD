@@ -22,7 +22,6 @@ class ListParentCategoryServiceTest {
     @Mock
     private ListParentCategoryPort listParentCategoryPort;
 
-
     @Test
     void it_should_list_parent_category() {
         //given
@@ -33,6 +32,5 @@ class ListParentCategoryServiceTest {
         //then
         verify(listParentCategoryPort).listParentCategory();
     }
-
 
 }

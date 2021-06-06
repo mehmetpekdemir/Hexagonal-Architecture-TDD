@@ -22,7 +22,7 @@ public class CategoryMapperService {
         final var status = Status.of(createCategoryCommand.getStatus()).orElse(Status.PASSIVE);
         final var categoryEntity = new CategoryEntity();
         categoryEntity.setUuid(uuid);
-        categoryEntity.setParentId(createCategoryCommand.getParentId());
+        categoryEntity.setParentId(null);
         categoryEntity.setName(createCategoryCommand.getName());
         categoryEntity.setDescription(createCategoryCommand.getDescription());
         categoryEntity.setStatus(status);
