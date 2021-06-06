@@ -2,11 +2,11 @@ package com.mehmetpekdemir.categoryservice.application.service;
 
 import com.mehmetpekdemir.categoryservice.application.port.in.CreateCategoryUseCase;
 import com.mehmetpekdemir.categoryservice.application.port.in.command.CreateCategoryCommand;
+import com.mehmetpekdemir.categoryservice.application.port.out.ExistsCategoryPort;
 import com.mehmetpekdemir.categoryservice.application.port.out.InsertCategoryPort;
-import com.mehmetpekdemir.categoryservice.application.port.out.ReadCategoryPort;
+import com.mehmetpekdemir.categoryservice.common.exception.CategoryBusinessException;
 import com.mehmetpekdemir.categoryservice.domain.Category;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,18 +20,20 @@ import org.springframework.transaction.annotation.Transactional;
 public class CreateCategoryService implements CreateCategoryUseCase {
 
     private final InsertCategoryPort insertCategoryPort;
-    private final ReadCategoryPort readCategoryPort;
+    private final ExistsCategoryPort existsCategoryPort;
 
     @Override
-    @SneakyThrows
     public Category createCategory(CreateCategoryCommand createCategoryCommand) {
-        final var category = readCategoryPort.readCategory(createCategoryCommand.getName());
-        //TODO : exception and messages .
-        if (category != null) {
-            throw new Exception("category name must be unique");
-        }
+        final boolean exists = existsCategoryPort.existsCategory(createCategoryCommand.getName());
+        isExists(exists);
 
         return insertCategoryPort.insertCategory(createCategoryCommand);
+    }
+
+    private void isExists(boolean exists) {
+        if (exists) {
+            throw new CategoryBusinessException("category.already.exists");
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-package com.mehmetpekdemir.commonservice.rest;
+package com.mehmetpekdemir.categoryservice.common.rest;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -28,7 +28,6 @@
     </developers>
 
     <modules>
-        <module>common-service</module>
         <module>category-service</module>
         <module>product-service</module>
         <module>ui-service</module>

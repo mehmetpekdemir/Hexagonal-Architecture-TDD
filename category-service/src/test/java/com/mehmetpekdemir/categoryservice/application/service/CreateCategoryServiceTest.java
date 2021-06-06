@@ -2,8 +2,8 @@ package com.mehmetpekdemir.categoryservice.application.service;
 
 import com.mehmetpekdemir.categoryservice.adapter.out.persistence.entity.Status;
 import com.mehmetpekdemir.categoryservice.application.port.in.command.CreateCategoryCommand;
+import com.mehmetpekdemir.categoryservice.application.port.out.ExistsCategoryPort;
 import com.mehmetpekdemir.categoryservice.application.port.out.InsertCategoryPort;
-import com.mehmetpekdemir.categoryservice.application.port.out.ReadCategoryPort;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,7 +28,7 @@ class CreateCategoryServiceTest {
     private InsertCategoryPort insertCategoryPort;
 
     @Mock
-    private ReadCategoryPort readCategoryPort;
+    private ExistsCategoryPort existsCategoryPort;
 
     @Test
     void it_should_success_category_create_when_category_called_with_valid_request() {
@@ -45,7 +45,7 @@ class CreateCategoryServiceTest {
         createCategoryService.createCategory(createCategoryCommand);
 
         //then
-        verify(readCategoryPort).readCategory("category name");
+        verify(existsCategoryPort).existsCategory("category name");
         verify(insertCategoryPort).insertCategory(createCategoryCommand);
     }
 

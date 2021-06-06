@@ -3,11 +3,10 @@ package com.mehmetpekdemir.categoryservice.adapter.out.persistence.adapter;
 import com.mehmetpekdemir.categoryservice.adapter.out.persistence.adapter.mapper.CategoryMapperService;
 import com.mehmetpekdemir.categoryservice.adapter.out.persistence.repository.CategoryJpaRepository;
 import com.mehmetpekdemir.categoryservice.application.port.in.command.CreateCategoryCommand;
+import com.mehmetpekdemir.categoryservice.application.port.out.ExistsCategoryPort;
 import com.mehmetpekdemir.categoryservice.application.port.out.InsertCategoryPort;
-import com.mehmetpekdemir.categoryservice.application.port.out.ReadCategoryPort;
 import com.mehmetpekdemir.categoryservice.domain.Category;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class CategoryJpaAdapter implements InsertCategoryPort, ReadCategoryPort {
+public class CategoryJpaAdapter implements InsertCategoryPort, ExistsCategoryPort {
 
     private final CategoryJpaRepository categoryJpaRepository;
     private final CategoryMapperService categoryMapperService;
@@ -29,14 +28,8 @@ public class CategoryJpaAdapter implements InsertCategoryPort, ReadCategoryPort 
     }
 
     @Override
-    @SneakyThrows
-    public Category readCategory(String name) {
-        //TODO : exception ayarlanacak.
-        final var categoryEntity = categoryJpaRepository.findByName(name);
-        if (categoryEntity.isEmpty()) {
-            return null;
-        }
-        return categoryMapperService.convertEntityToDomain(categoryEntity.get());
+    public boolean existsCategory(String name) {
+        return categoryJpaRepository.existsByName(name);
     }
 
 }
