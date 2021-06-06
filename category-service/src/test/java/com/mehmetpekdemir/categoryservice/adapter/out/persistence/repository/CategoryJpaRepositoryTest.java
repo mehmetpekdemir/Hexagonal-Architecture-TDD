@@ -22,7 +22,7 @@ class CategoryJpaRepositoryTest extends AbstractTestContainer {
     private CategoryJpaRepository categoryJpaRepository;
 
     @Test
-    void it_should_success_category_create_when_category_called_with_valid_request() {
+    void it_should_create_category_when_category_called_with_valid_request() {
         //given
         final String uuid = UUID.randomUUID().toString();
         final var status = Status.of("active");

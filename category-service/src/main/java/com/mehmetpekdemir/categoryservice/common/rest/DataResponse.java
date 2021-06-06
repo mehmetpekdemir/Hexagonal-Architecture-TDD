@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-class DataResponse<T> {
+public class DataResponse<T> {
 
     private List<T> data = List.of();
     private MetaResponse meta;
