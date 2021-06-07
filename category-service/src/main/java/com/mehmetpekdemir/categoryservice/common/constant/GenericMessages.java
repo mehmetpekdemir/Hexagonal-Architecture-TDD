@@ -9,6 +9,6 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class GenericMessages {
 
-    private static final String SUCCESSFULLY_DELETED = "Successfully deleted";
+    public static final String SUCCESSFULLY_DELETED = "Successfully deleted";
 
 }
