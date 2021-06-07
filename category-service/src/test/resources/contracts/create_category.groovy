@@ -17,7 +17,6 @@ Contract.make {
 
         body("""
                     {
-                        "parentId": "null",
                         "name": "laptop",
                         "description": "macbook pro m1 16gb ram 256gb hard disk ",
                         "status": "active"
